@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include syndrome-ansible-template"
+      include_role:
+        name: "syndrome-ansible-template"
