@@ -18,7 +18,7 @@ provisioner:
       packer_builder_type=docker
       packer_http_addr=
       created=byMolecule
-      image=##TODO##
+      image=nginx
       aws_region=us-east-1
 verifier:
   name: ansible

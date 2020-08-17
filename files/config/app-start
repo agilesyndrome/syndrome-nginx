@@ -2,9 +2,9 @@ set -e
 nginx -t
 
 # Testing PHP
-command -v php
+PHP_LOCATION=$(command -v php || true)
 
-if [ $? == 0 ]; then
+if [ -n "${PHP_LOCATION}" ]; then
     PHP_VERSION=$(php -v | head -n1 | cut -d " " -f2 | cut -c "1-3")
     echo "Restarting php${PHP_VERSION}-fpm service"
     service php${PHP_VERSION}-fpm start
