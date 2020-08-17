@@ -1,0 +1,23 @@
+---
+# In Docker, we want all Nginx logging to be sent to /dev/stdout and /dev/stderr
+- name: Remove existing log files
+  file:
+    state: absent
+    path: "{{ item }}"
+  with_items:
+      - /var/log/nginx/access.log
+      - /var/log/nginx/error.log
+
+- name: Setup Docker Error logging
+  file:
+    state: link
+    src: /dev/stderr
+    path: /var/log/nginx/error.log
+
+- name: Setup Docker Access logging
+  file:
+    state: link
+    src: /dev/stdout
+    path: /var/log/nginx/access.log
+
+

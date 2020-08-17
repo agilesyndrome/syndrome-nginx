@@ -2,6 +2,6 @@
 - name: Converge
   hosts: all
   tasks:
-    - name: "Include syndrome-ansible-template"
+    - name: "Include syndrome-nginx"
       include_role:
-        name: "syndrome-ansible-template"
+        name: "syndrome-nginx"

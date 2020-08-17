@@ -1,0 +1,21 @@
+server {
+    listen 8888;
+    server_name {{ getv "/host" }};
+    root {{getv "/root"}};
+    index index.html index.html;
+
+    {{getv "/nginx/errors" "error_page 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 421 422 423 424 425 426 428 429 431 451 500 501 502 503 504 505 506 507 508 510 511 /nginxerror.html;" }}
+
+    location / {
+        root   {{ getv "/root" }};
+        index  {{ getv "/index" "index.html" }};
+    }
+
+    location /nginxerror.html {
+        ssn on;
+        internal;
+        auth_basic off;
+        root {{getv "/nginx/error_root" "/var/www/default"}};
+    }
+
+}

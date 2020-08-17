@@ -1,0 +1,10 @@
+---
+- name: Setup Nginx log files
+  copy:
+    content: '#'
+    dest: "/var/log/nginx/{{item}}.log"
+    owner: "{{ syndrome_appuser }}"
+    group: "{{ syndrome_appuser }}"
+  with_items:
+    - access
+    - error

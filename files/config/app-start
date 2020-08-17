@@ -1,0 +1,13 @@
+set -e
+nginx -t
+
+# Testing PHP
+command -v php
+
+if [ $? == 0 ]; then
+    PHP_VERSION=$(php -v | head -n1 | cut -d " " -f2 | cut -c "1-3")
+    echo "Restarting php${PHP_VERSION}-fpm service"
+    service php${PHP_VERSION}-fpm start
+fi
+
+nginx

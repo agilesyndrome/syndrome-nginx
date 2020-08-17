@@ -1,2 +1,6 @@
 ---
 # defaults file for syndrome-ansible-template
+syndrome_appuser: appbot
+apt_key_urls: []
+apt_repositories: []
+apt_packages: []
